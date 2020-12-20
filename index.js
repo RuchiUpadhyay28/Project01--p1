@@ -81,6 +81,7 @@ function gameBegin(){
     }
     
     gameLogic(questions[i].question,questions[i].answer);
+  }
   console.log(chalk.yellow("-----------------------------------------"));
   console.log(chalk.bold.italic("Game Over!! Your Final Score is: ",userScore));
   console.log(chalk.yellow("-----------------------------------------"));
@@ -114,6 +115,8 @@ function playAgain(){
   }
   
 }
+
 if(flag===0){
   gameBegin();
 }
+  
