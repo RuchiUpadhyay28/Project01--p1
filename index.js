@@ -9,6 +9,8 @@ var userName=readlineSync.question("Enter you Name: ");
 
 console.log(chalk.blueBright.bold("Hello ",userName,"!! Let's begin..."));
 
+
+
 var userScore=0;
 var flag=0;
 var winners={};
@@ -44,7 +46,6 @@ function gameLogic(question,answer){
 }
 
 function gameWinners(){
-  // winnerList.sort();
   var nameFoundFlag=0;
   if(winnerList.length==0){
     winners.name=userName;
@@ -64,10 +65,7 @@ function gameWinners(){
       }
     }
   }
-  
-  for(var i in winnerList){
-    console.log(winnerList[i]);
-  }
+
   winnerList.sort();
 }
 
@@ -76,12 +74,13 @@ function gameBegin(){
   console.log(chalk.cyanBright("<<<<Press 'e' anytime you want to exit from the game>>>>"));
   console.log();
   userScore=0;
+  flag=0;
   for(var i in questions){
     if(flag==1){ 
       break;
     }
+    
     gameLogic(questions[i].question,questions[i].answer);
-  }
   console.log(chalk.yellow("-----------------------------------------"));
   console.log(chalk.bold.italic("Game Over!! Your Final Score is: ",userScore));
   console.log(chalk.yellow("-----------------------------------------"));
@@ -91,23 +90,30 @@ function gameBegin(){
 }
 
 function playAgain(){
-  var userResponse=readlineSync.question("Do you want to play again? Press 'Y' for Yes and 'N' for No ");
-  while(userResponse!='Y' || userResponse!='N'){
+  var userResponse="";
+  var inp=0;
+
+  while(inp!=1){
+    userResponse=readlineSync.question("Do you want to play again? Press 'Y' for Yes and 'N' for No: ");
     if(userResponse==='Y'){
-    gameBegin();
-    }
+      inp=1;
+      gameBegin();
+   }
   else if(userResponse==='N'){
+    flag=1;
+    inp=1;
     console.log();
     console.log(chalk.yellow("***********************************************"));
     console.log(chalk.bold.italic("Thank You!! Hope you enjoyed.."));
     console.log(chalk.yellow("***********************************************"));
-    break;
     }
   else{
     console.log("Invalid Response!");
-    break;
+    inp=0;
     }
   }
+  
 }
-
-gameBegin();
+if(flag===0){
+  gameBegin();
+}
