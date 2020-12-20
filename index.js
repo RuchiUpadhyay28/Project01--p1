@@ -64,8 +64,6 @@ function gameWinners(){
       }
     }
   }
-
-  console.log(nameFoundFlag);
   
   for(var i in winnerList){
     console.log(winnerList[i]);
@@ -83,7 +81,6 @@ function gameBegin(){
       break;
     }
     gameLogic(questions[i].question,questions[i].answer);
-    // console.log("")
   }
   console.log(chalk.yellow("-----------------------------------------"));
   console.log(chalk.bold.italic("Game Over!! Your Final Score is: ",userScore));
